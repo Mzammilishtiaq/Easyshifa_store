@@ -45,6 +45,7 @@
   --sidebar-ring: oklch(0.87 0 0);
   --primary-100: #219D86;
   --primary-50: #F6FBFA;
+  --primary-10:rgba(255, 173, 77, 0.12);
 }
 
 .dark {
@@ -122,6 +123,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-primary-100: var(--primary-100);
   --color-primary-50: var(--primary-50);
+  --color-primary-10: var(--primary-10)
 }
 
 @layer base {
