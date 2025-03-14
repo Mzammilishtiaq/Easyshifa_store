@@ -17,14 +17,15 @@ const Navbar = () => {
   const [addCartIndex,setAddCartIndex]=useState(0)
   const [isactivelink, setActiveLink] = useState('/');
   useEffect(() => {
-  const fetchData = () => {
-    const storedCartItems = localStorage.getItem('cartItems');
-    const cartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
-    const cartItemsLength = cartItems.length;
-    setAddCartIndex(cartItemsLength)
-    console.log(cartItemsLength);
-  };
-    fetchData();
+    const fetchData = () => {
+      const storedCartItems = localStorage.getItem('cartItems');
+      const cartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
+      const cartItemsLength = cartItems.length;
+      setAddCartIndex(cartItemsLength)
+      console.log(cartItemsLength);
+    };
+    const interval = setInterval(fetchData, 1000);
+    return () => clearInterval(interval); // This is to clear the interval when the component unmounts
   }, [addCartIndex]);
   const navlink = [
     {
