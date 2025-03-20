@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
@@ -5,8 +6,15 @@ import Search from '../../../public/search_icon.svg'
 import Upload from '../../../public/upload_icon.svg'
 import ProductCard from '@/components/Shared/ProductCard/ProductCard'
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination'
-
+import Product1 from '../../../public/image1.png';
+import { useDispatch } from 'react-redux'
+import {addItem} from '@/redux/feature/cartlist/cartist'
 const page = () => {
+  const dispatch = useDispatch();
+  const handleAddToCart = (product:any) => {
+    console.log('product',product)
+        dispatch(addItem(product));
+      }
   const category = [
     "Medicines",
     "Beauty & Wellness",
@@ -27,7 +35,7 @@ const page = () => {
   return (
     <section className='w-full flex flex-col items-center justify-center px-20 py-10 space-y-5 '>
 
-        <div className='container mx-auto flex flex-col  space-y-10 py-10 bg-primary-50 rounded-lg'>
+        <div className='container  flex flex-col  space-y-10 py-10 bg-primary-50 rounded-lg'>
           <div className='flex items-center justify-center flex-col gap-4 w-full'>
             <h1 className='text-[2.5rem] font-semibold text-center '>Explore Medicines</h1>
             <p className='text-center text-black/100'>Easily order your essentials online and let us take care of the rest, <br /> delivering directly to your doorstep.</p>
@@ -40,7 +48,7 @@ const page = () => {
             </div>
           </div>
         </div>
-        <div className='w-full flex items-center justify-between'>
+        <div className='container w-full mx-auto flex items-center justify-between'>
           <h1>1200 + Products</h1>
           <div className='flex items-center space-x-2'>
             <p>Sort By:</p>
@@ -52,21 +60,35 @@ const page = () => {
             </select>
           </div>
         </div>
-        <div className='flex items-start space-x-5'>
-          <div className='flex flex-col border rounded space-y-3 p-3'>
-            <h1 className='text-lg font-semibold'>Filters</h1>
-            <h1 className='text-lg font-semibold'>Category</h1>
+        <div className='flex  container w-full justify-between mx-auto'>
+          <div className='flex flex-col w-96 h-full border rounded space-y-3 p-3 '>
+            <h1 className='text-2xl font-semibold'>Filters</h1>
+            <h1 className='text-lg font-medium'>Category</h1>
             <div className=''>
-              {category.map((item) => <div className='flex items-center space-x-10'><input type="checkbox"  /><p>{item}</p></div>)}
+              {category.map((item) => <div className='flex items-center space-x-10' key={item}><input type="checkbox"  /><p>{item}</p></div>)}
             </div>
-            <h1 className='text-lg font-semibold'>By Medical Field</h1>
+            <h1 className='text-lg font-medium'>By Medical Field</h1>
             <div className=''>
-              {ByMedicalField.map((item) => <div className='flex items-center space-x-10'><input type="checkbox"  /><p>{item}</p></div>)}
+              {ByMedicalField.map((item) => 
+              <div className='flex items-center space-x-10' key={item}>
+                <input type="checkbox"  />
+                <p>{item}</p>
+                </div>
+              )}
             </div>
           </div>
-          <div className='grid grid-cols-3 items-center justify-center gap-5'>
+          <div className='grid grid-cols-3 items-center justify-center gap-10'>
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) =>
-              <ProductCard  key={index}/>
+              <ProductCard
+              key={index}
+              Discont='10'
+              Picture={Product1}
+              Title='medicenc'
+              Rating='4.5'
+              SubTitle='bottle 1001'
+              Price='100'
+              SubPrice='200'
+              handleAddtocard={() => handleAddToCart({ id: index, title: 'medicenc', price: 100, image:Product1 })} />
             )}
           </div>
         </div>

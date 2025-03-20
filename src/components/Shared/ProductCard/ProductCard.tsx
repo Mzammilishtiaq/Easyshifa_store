@@ -1,3 +1,4 @@
+"use client"
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardImage, CardTitle } from '@/components/ui/card'
 import React from 'react'
@@ -17,14 +18,14 @@ const ProductCard = ({ Discont, handleAddtocard, Picture, Price, Rating, SubPric
     <Card className='flex flex-col gap-2 w-[20rem] p-2'>
       <div className='flex items-center justify-center relative bg-gray-200 rounded-md'>
         <div className='bg-blue-300 text-white px-2 py-1 rounded-r-md absolute top-2 left-0 text-xs'>{Discont} OFF</div>
-        <CardImage src={Picture.src} alt='product1' width={200} height={200} />
+        <CardImage src={Picture.src} alt='product1' width={400} height={400} />
       </div>
       <CardContent className='flex flex-col  gap-1'>
         <div className="flex items-center justify-between p-1">
-          <CardTitle className="text-sm font-normal">{Title}</CardTitle>
+          <CardTitle className="text-[20px] capitalize font-normal">{Title}</CardTitle>
           <div>⭐ {Rating}</div>
         </div>
-        <CardDescription className='text-xs'>{SubTitle}</CardDescription>
+        <CardDescription className='text-sm capitalize'>{SubTitle}</CardDescription>
         <CardFooter className='flex items-center justify-between gap-2'>
           <div className="flex flex-col space-y-0">
             <p className="text-primary-100">{Price}Rs</p>

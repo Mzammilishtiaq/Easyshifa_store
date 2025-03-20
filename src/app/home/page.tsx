@@ -15,7 +15,7 @@ import BlogCard from '@/components/Shared/BlogCard/BlogCard';
 
 const page = () => {
   return (
-    <div className="w-full flex flex-col space-y-10">
+    <section className="w-full flex flex-col space-y-10">
       <HeroSection />
       <Productlist />
 
@@ -63,13 +63,15 @@ const page = () => {
           <h1 className='text-2xl font-semibold'>Health Tips Articles</h1>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is teh dummy text.</p>
         </div>
-        <div className=' grid grid-cols-4 gap-3'>
-      { [1,1,1,1].map((index)=>( <BlogCard />))}
+        <div className='grid grid-cols-4 gap-3'>
+      { [1,2,3,4].map((index)=>( 
+        <BlogCard key={index}/>
+        ))}
         </div>
         <button className='border px-3 py-2 flex space-x-3 rounded-lg'><p>Show More</p> <Image src={ThinArrow} alt={''}/></button>
       </div>
 
-    </div>
+    </section>
   )
 }
 
