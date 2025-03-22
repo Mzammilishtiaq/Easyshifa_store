@@ -24,8 +24,8 @@ const Navbar = () => {
       setAddCartIndex(cartItemsLength)
       console.log(cartItemsLength);
     };
-    const interval = setInterval(fetchData, 1000);
-    return () => clearInterval(interval); // This is to clear the interval when the component unmounts
+    // const interval = setInterval(fetchData, 1000);
+    // return () => clearInterval(interval);
   }, [addCartIndex]);
   const navlink = [
     {

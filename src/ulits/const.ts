@@ -1,0 +1,1 @@
+export const STORAGE = 'EASYSHIFA_USER_SITE';
