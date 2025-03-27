@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Shared/Navbar/Navbar";
-import Footer from "@/components/Shared/Footer/Footer";
-import { ReduxProvider } from '@/redux/ReduxProvider'
+import { ReduxProvider } from "@/redux/ReduxProvider";
+import LayoutWrapper from "@/components/Shared/LayoutWrapper/LayoutWrapper"; // ✅ Import the new wrapper
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -21,19 +21,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-          <ReduxProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </ReduxProvider>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ReduxProvider>
+          <LayoutWrapper>{children}</LayoutWrapper> {/* ✅ Wrap content inside the client component */}
+        </ReduxProvider>
       </body>
     </html>
   );
